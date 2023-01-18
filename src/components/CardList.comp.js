@@ -1,3 +1,11 @@
+import Card from './Card.comp.js'
+
 function CardList() {
-  return <div>CardList</div>
+  return (
+    <div>
+      <Card /> CardList
+    </div>
+  )
 }
+
+export default CardList
