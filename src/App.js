@@ -9,11 +9,9 @@ function App() {
     require.context('./assets/', false, /\.(png|jpe?g|svg)$/)
   )
 
-  console.log(images)
-
   return (
     <div>
-      <CardList />
+      <CardList img={images} />
     </div>
   )
 }

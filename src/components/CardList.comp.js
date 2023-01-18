@@ -1,9 +1,9 @@
 import Card from './Card.comp.js'
 
-function CardList() {
+function CardList(props) {
   return (
     <div>
-      <Card /> CardList
+      <Card image={props.img} />
     </div>
   )
 }
