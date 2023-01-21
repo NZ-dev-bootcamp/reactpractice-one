@@ -11,7 +11,7 @@ function Card(props) {
   }
 
   const imageHandleDecrement = () => {
-    if (count >= 0) {
+    if (count > 0) {
       setCount((prevCount) => prevCount - 1)
       console.log('count minus ', count)
     }
