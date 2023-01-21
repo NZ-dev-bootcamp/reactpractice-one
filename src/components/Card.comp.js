@@ -12,6 +12,7 @@ function Card(props) {
   console.log('CARD COMPONENT', props.image)
   return (
     <div>
+      <FiChevronsLeft />
       <img className={classes.image} src={props.image[2]} />
       <FiChevronsRight onClick={imageHandleClick} />
     </div>
