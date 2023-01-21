@@ -11,7 +11,7 @@ function Card(props) {
   }
 
   const imageHandleDecrement = () => {
-    if (count < 0) {
+    if (count >= 0) {
       setCount((prevCount) => prevCount - 1)
       console.log('count minus ', count)
     }
@@ -22,7 +22,7 @@ function Card(props) {
   return (
     <div>
       <FiChevronsLeft onClick={imageHandleDecrement} />
-      <img className={classes.image} src={props.image[2]} />
+      <img className={classes.image} src={props.image[count]} />
       {count}
       <FiChevronsRight onClick={imageHandleIncrement} />
     </div>
