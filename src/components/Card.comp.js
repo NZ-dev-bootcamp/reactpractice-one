@@ -5,31 +5,35 @@ import { useEffect } from 'react'
 
 function Card(props) {
   const [count, setCount] = useState(0)
-  const [lastCount, setLastCount] = useState(props.image.length - 1)
-  const [nextCount, setNextCount] = useState(1)
+  const [lastCount, setLastCount] = useState(1)
+  const [nextCount, setNextCount] = useState(props.image.length - 1)
 
   useEffect(() => {
     // setCount(0)
-    setLastCount(count - 1)
-    setNextCount(count + 1)
+    if (count < props.image.length - 1) {
+      setNextCount(count + 1)
+      if (count <= 0) {
+        setLastCount(props.image.length - 1)
+      } else {
+        setLastCount(count - 1)
+      }
+    }
   }, [lastCount, nextCount, count])
 
   function imageHandleIncrement() {
     if (count < props.image.length - 1) {
-      setCount(count + 1) //working
-      setNextCount(count + 1)
-      setLastCount(count - 1)
-      if (lastCount === 0) {
-        setLastCount(props.image.length - 1)
-      }
+      setCount((prevCount) => prevCount + 1) //working
+      // setNextCount(count + 1)
+      // setLastCount(count - 1)
+    }
+
+    if (count === props.image.length - 1) {
+      setCount(0) //working
     }
 
     // if (nextCount === props.image.length - 1) {
     //   setNextCount(0)
     // } // working
-    // if (count === props.image.length - 1) {
-    //   setCount(0) //working
-    // }
 
     // if (nextCount < props.image.length - 1) {
     //   setNextCount(count + 1)
