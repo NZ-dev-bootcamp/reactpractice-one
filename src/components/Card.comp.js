@@ -1,47 +1,69 @@
 import classes from './Card.module.css'
 import { useState } from 'react'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
+import { useEffect } from 'react'
 
 function Card(props) {
   const [count, setCount] = useState(0)
+  const [lastCount, setLastCount] = useState(props.image.length - 1)
+  const [nextCount, setNextCount] = useState(1)
 
-  const imageHandleIncrement = () => {
+  useEffect(() => {
+    // setCount(0)
+    setLastCount(count - 1)
+    setNextCount(count + 1)
+  }, [lastCount, nextCount, count])
+
+  function imageHandleIncrement() {
     if (count < props.image.length - 1) {
-      setCount((prevCount) => prevCount + 1)
-      console.log('count ', count)
+      setCount(count + 1) //working
+      setNextCount(count + 1)
+      setLastCount(count - 1)
+      if (lastCount === 0) {
+        setLastCount(props.image.length - 1)
+      }
     }
-    if (count === props.image.length - 1) {
-      setCount(0)
-    }
+
+    // if (nextCount === props.image.length - 1) {
+    //   setNextCount(0)
+    // } // working
+    // if (count === props.image.length - 1) {
+    //   setCount(0) //working
+    // }
+
+    // if (nextCount < props.image.length - 1) {
+    //   setNextCount(count + 1)
+    //   setLastCount(lastCount - 1)
+    // } // working
   }
 
   const imageHandleDecrement = () => {
     if (count > 0) {
       setCount((prevCount) => prevCount - 1)
-      console.log('count minus ', count)
     } else {
       setCount((prevCount) => prevCount - 1)
       setCount(props.image.length - 1)
     }
-  }
 
-  console.log('CARD COMPONENT', props.image)
+    setLastCount(count - 1)
+  }
 
   return (
     <div className={classes.container}>
-      <div className={classes.thumbnail} onClick={imageHandleIncrement}>
-        {/* <img className={classes.smallImage} src={props.image[count - 1]} /> */}
-        <FiChevronsLeft
-          className={classes.arrow}
-          onClick={imageHandleDecrement}
-        />
+      <div className={classes.thumbnail} onClick={() => imageHandleDecrement()}>
+        <img className={classes.smallImage} src={props.image[lastCount]} />
+        <FiChevronsLeft className={classes.arrow} />
       </div>
       <img className={classes.image} src={props.image[count]} />
-      <div className={classes.thumbnail} onClick={imageHandleIncrement}>
-        {/* <img className={classes.smallImage} src={props.image[count + 1]} /> */}
+      <div className={classes.thumbnail} onClick={() => imageHandleIncrement()}>
+        <img className={classes.smallImage} src={props.image[nextCount]} />
         <FiChevronsRight className={classes.arrow} />
       </div>
-      {count}
+      <ul>
+        <li>decrement = {lastCount}</li>
+        <li>Current image = {count}</li>
+        <li>Increment = {nextCount}</li>
+      </ul>
     </div>
   )
 }
