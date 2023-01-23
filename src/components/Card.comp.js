@@ -19,23 +19,29 @@ function Card(props) {
     if (count > 0) {
       setCount((prevCount) => prevCount - 1)
       console.log('count minus ', count)
+    } else {
+      setCount((prevCount) => prevCount - 1)
+      setCount(props.image.length - 1)
     }
   }
 
   console.log('CARD COMPONENT', props.image)
 
   return (
-    <div>
-      <FiChevronsLeft
-        className={classes.arrow}
-        onClick={imageHandleDecrement}
-      />
+    <div className={classes.container}>
+      <div className={classes.thumbnail} onClick={imageHandleIncrement}>
+        {/* <img className={classes.smallImage} src={props.image[count - 1]} /> */}
+        <FiChevronsLeft
+          className={classes.arrow}
+          onClick={imageHandleDecrement}
+        />
+      </div>
       <img className={classes.image} src={props.image[count]} />
+      <div className={classes.thumbnail} onClick={imageHandleIncrement}>
+        {/* <img className={classes.smallImage} src={props.image[count + 1]} /> */}
+        <FiChevronsRight className={classes.arrow} />
+      </div>
       {count}
-      <FiChevronsRight
-        className={classes.arrow}
-        onClick={imageHandleIncrement}
-      />
     </div>
   )
 }
