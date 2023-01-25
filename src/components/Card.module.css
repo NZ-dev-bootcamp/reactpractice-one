@@ -15,8 +15,6 @@
   align-items: center;
   width: 200px;
   height: 300px;
-  /* height: auto; */
-  /* object-fit: none; */
   background-color: black;
 }
 
@@ -45,7 +43,7 @@
   cursor: pointer;
   opacity: .7;
   position: absolute;
-  font-size: 8vw;
+  font-size: 5vw;
   z-index:  1;
 }
 
