@@ -16,12 +16,12 @@
   width: 200px;
   height: 300px;
   /* height: auto; */
-  object-fit: none;
+  /* object-fit: none; */
   background-color: black;
 }
 
 .sideImage {
-  object-fit: cover;
+  /* object-fit: cover; */
   cursor: pointer;
   opacity: .5;
   max-width: 200px;
