@@ -41,17 +41,21 @@ function Card(props) {
   console.log(count)
 
   return (
-    <div className={classes.container}>
-      <div className={classes.thumbnail} onClick={imageHandleDecrement}>
-        <img className={classes.smallImage} src={props.image[prevImage]} />
+    <div className={classes.cardContainer}>
+      <div className={classes.sideImageContainer} onClick={imageHandleDecrement}>
+        <img className={classes.sideImage} src={props.image[prevImage]} />
         <FiChevronsLeft className={classes.arrow} />
       </div>
 
-      <img className={classes.image} src={props.image[count]} />
-      <div className={classes.thumbnail} onClick={imageHandleIncrement}>
-        <img className={classes.smallImage} src={props.image[nextImage]} />
+      <div className={classes.mainImageContainer}>
+        <img className={classes.mainImage} src={props.image[count]} />
+      </div>
+
+      <div className={classes.sideImageContainer} onClick={imageHandleIncrement}>
+        <img className={classes.sideImage} src={props.image[nextImage]} />
         <FiChevronsRight className={classes.arrow} />
       </div>
+
     </div>
   )
 }
