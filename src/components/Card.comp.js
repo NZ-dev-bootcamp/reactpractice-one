@@ -44,7 +44,7 @@ function Card(props) {
     <div className={classes.cardContainer}>
       <div className={classes.sideImageContainer} onClick={imageHandleDecrement}>
         <img className={classes.sideImage} src={props.image[prevImage]} />
-        <FiChevronsLeft className={classes.arrow} />
+          <FiChevronsLeft className={classes.arrow} />
       </div>
 
       <div className={classes.mainImageContainer}>
@@ -53,7 +53,7 @@ function Card(props) {
 
       <div className={classes.sideImageContainer} onClick={imageHandleIncrement}>
         <img className={classes.sideImage} src={props.image[nextImage]} />
-        <FiChevronsRight className={classes.arrow} />
+          <FiChevronsRight className={classes.arrow} />
       </div>
 
     </div>
