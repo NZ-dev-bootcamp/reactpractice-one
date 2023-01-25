@@ -49,7 +49,7 @@ function Card(props) {
   function onHoverChangeHandler(e) {
     console.log('on hover')
     console.log('e target', e.target)
-    e.target.style.visibility = className = 'visibility: visible'
+    e.target.style.cursor = 'pointer'
   }
 
   return (
@@ -70,12 +70,13 @@ function Card(props) {
         <img className={classes.mainImage} src={props.image[count]} />
       </div>
 
-      <div
-        className={classes.sideImageContainer}
-        onClick={imageHandleIncrement}
-      >
-        <FiChevronsRight className={classes.arrow} />
+      <div className={classes.sideImageContainer}>
+        <FiChevronsRight
+          className={classes.arrow}
+          onClick={imageHandleIncrement}
+        />
         <img
+          onClick={imageHandleIncrement}
           onMouseOver={onHoverChangeHandler}
           className={`${classes.sideImage} "img"`}
           src={props.image[nextImage]}
