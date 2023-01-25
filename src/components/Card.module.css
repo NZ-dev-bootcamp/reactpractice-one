@@ -27,6 +27,13 @@
   max-width: 200px;
   max-height: 300px;
 }
+
+.sideImageHover {
+  opacity: 1;
+  transition-duration: 1s;
+  transform:scale(1.1);
+}
+
 .mainImage {
   object-fit: contain;
   background-color: black;
@@ -42,11 +49,7 @@
   z-index:  1;
 }
 
-.sideImage:hover {
-  opacity: 1;
-  transition-duration: 1s;
-  transform:scale(1.1);
-}
+
 
 .arrow:hover {
   transition-duration: 1s;

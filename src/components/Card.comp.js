@@ -6,11 +6,13 @@ function Card(props) {
   const [count, setCount] = useState(0)
   const [prevImage, setPrevImage] = useState([props.image.length - 1])
   const [nextImage, setNextImage] = useState([1])
+  const [toggle, setToggle] = useState(false)
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
     setNextImage(count + 2)
     setPrevImage(count)
+    setToggle(!toggle)
 
     if (count === props.image.length - 1) {
       setCount(0)
@@ -48,8 +50,13 @@ function Card(props) {
 
   function onHoverChangeHandler(e) {
     console.log('on hover')
-    console.log('e target', e.target)
-    e.target.style.cursor = 'pointer'
+    console.log('e target', e.target.value)
+    setToggle(true)
+  }
+  function offHoverChangeHandler(e) {
+    console.log('on hover')
+    console.log('e target', e.target.value)
+    setToggle(false)
   }
 
   return (
@@ -60,7 +67,6 @@ function Card(props) {
       >
         <FiChevronsLeft className={classes.arrow} />
         <img
-          // onHover={hoverThis}
           className={`${classes.sideImage} "img"`}
           src={props.image[prevImage]}
         />
@@ -74,11 +80,17 @@ function Card(props) {
         <FiChevronsRight
           className={classes.arrow}
           onClick={imageHandleIncrement}
+          onMouseOver={onHoverChangeHandler}
+          onMouseOut={offHoverChangeHandler}
         />
         <img
-          onClick={imageHandleIncrement}
           onMouseOver={onHoverChangeHandler}
-          className={`${classes.sideImage} "img"`}
+          onMouseOut={offHoverChangeHandler}
+          onClick={imageHandleIncrement}
+          // className={`${toggle} ? ${classes.sideImageHover} : ${classes.sideImage}`}
+          className={`${classes.sideImage} ${
+            toggle && classes.sideImageHover
+          } `}
           src={props.image[nextImage]}
         />
       </div>
