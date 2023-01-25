@@ -28,7 +28,8 @@
   max-height: 300px;
 }
 
-.sideImageHover {
+#sideImageHover {
+  display: hidden;
   opacity: 1;
   transition-duration: 1s;
   transform:scale(1.1);
@@ -49,7 +50,8 @@
   z-index:  1;
 }
 
-.arrow:hover {
+.arrowHover {
+  visibility: hidden;
   transition-duration: 1s;
   transform:scale(1.1);
 }

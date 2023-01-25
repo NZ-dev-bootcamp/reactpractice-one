@@ -1,18 +1,19 @@
 import classes from './Card.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 
 function Card(props) {
   const [count, setCount] = useState(0)
   const [prevImage, setPrevImage] = useState([props.image.length - 1])
   const [nextImage, setNextImage] = useState([1])
-  const [toggle, setToggle] = useState(false)
+
+  const [toggleHover, setToggleHover] = useState(false)
+  //const [toggleHover, setToggleHover] = useState(!sideImageHover && !arrowHover)
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
     setNextImage(count + 2)
     setPrevImage(count)
-    setToggle(!toggle)
 
     if (count === props.image.length - 1) {
       setCount(0)
@@ -40,74 +41,37 @@ function Card(props) {
     }
   }
 
-  console.log(count)
 
-  // const hoverThis = () => {
-  //   document.querySelector('.arrowHover').addEventListener('mouseenter', () => {
-  //     this.style.display = 'visible'
-  //   })
-  // }
-
-  function onHoverChangeHandler(e) {
-    console.log('on hover')
-    console.log('e target', e.target.value)
-    setToggle(true)
-  }
-  function offHoverChangeHandler(e) {
-    console.log('on hover')
-    console.log('e target', e.target.value)
-    setToggle(false)
+  const toggleHoverHandler = (e) => {
+    if (e.target.alt === "side image" || "arrow") {
+      setToggleHover(true);
+      //&& sideImageHover, arrowHover
+    } else {
+      setToggleHover(false);
+      //&& !sideImageHover, !arrowHover
+    }
+    console.log(toggleHover);
   }
 
   return (
-    <div className={classes.cardContainer}>
-<<<<<<< HEAD
+    <div className={classes.cardContainer} onMouseOver={toggleHoverHandler}>
+
       <div className={classes.sideImageContainer} onClick={imageHandleDecrement}>
-        <img className={classes.sideImage} src={props.image[prevImage]} />
-          <FiChevronsLeft className={classes.arrow} />
-=======
-      <div
-        className={classes.sideImageContainer}
-        onClick={imageHandleDecrement}
-      >
-        <FiChevronsLeft className={classes.arrow} />
-        <img
-          className={`${classes.sideImage} "img"`}
-          src={props.image[prevImage]}
-        />
->>>>>>> aaronscss
+          <FiChevronsLeft className={classes.arrow} alt="arrow" /> //need to add arrowHover in className
+          <img className={classes.sideImage} src={props.image[prevImage]} alt="side image" /> //need to add sideImageHover in className
       </div>
 
       <div className={classes.mainImageContainer}>
-        <img className={classes.mainImage} src={props.image[count]} />
+        <img className={classes.mainImage} src={props.image[count]} alt="main image" />
       </div>
 
-<<<<<<< HEAD
       <div className={classes.sideImageContainer} onClick={imageHandleIncrement}>
-        <img className={classes.sideImage} src={props.image[nextImage]} />
-          <FiChevronsRight className={classes.arrow} />
-=======
-      <div className={classes.sideImageContainer}>
-        <FiChevronsRight
-          className={classes.arrow}
-          onClick={imageHandleIncrement}
-          onMouseOver={onHoverChangeHandler}
-          onMouseOut={offHoverChangeHandler}
-        />
-        <img
-          onMouseOver={onHoverChangeHandler}
-          onMouseOut={offHoverChangeHandler}
-          onClick={imageHandleIncrement}
-          // className={`${toggle} ? ${classes.sideImageHover} : ${classes.sideImage}`}
-          className={`${classes.sideImage} ${
-            toggle && classes.sideImageHover
-          } `}
-          src={props.image[nextImage]}
-        />
->>>>>>> aaronscss
+        <FiChevronsRight className={classes.arrow} onClick={imageHandleIncrement} alt="arrow" /> //need to add arrowHover in className
+        <img className={classes.sideImage} alt="side image" src={props.image[nextImage]} /> //need to add sideImageHover in className
       </div>
+
     </div>
   )
 }
 
-export default Card
+export default Card;
