@@ -6,11 +6,13 @@ function Card(props) {
   const [count, setCount] = useState(0)
   const [prevImage, setPrevImage] = useState([props.image.length - 1])
   const [nextImage, setNextImage] = useState([1])
+  const [toggle, setToggle] = useState(false)
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
     setNextImage(count + 2)
     setPrevImage(count)
+    setToggle(!toggle)
 
     if (count === props.image.length - 1) {
       setCount(0)
@@ -40,22 +42,70 @@ function Card(props) {
 
   console.log(count)
 
+  // const hoverThis = () => {
+  //   document.querySelector('.arrowHover').addEventListener('mouseenter', () => {
+  //     this.style.display = 'visible'
+  //   })
+  // }
+
+  function onHoverChangeHandler(e) {
+    console.log('on hover')
+    console.log('e target', e.target.value)
+    setToggle(true)
+  }
+  function offHoverChangeHandler(e) {
+    console.log('on hover')
+    console.log('e target', e.target.value)
+    setToggle(false)
+  }
+
   return (
     <div className={classes.cardContainer}>
+<<<<<<< HEAD
       <div className={classes.sideImageContainer} onClick={imageHandleDecrement}>
         <img className={classes.sideImage} src={props.image[prevImage]} />
           <FiChevronsLeft className={classes.arrow} />
+=======
+      <div
+        className={classes.sideImageContainer}
+        onClick={imageHandleDecrement}
+      >
+        <FiChevronsLeft className={classes.arrow} />
+        <img
+          className={`${classes.sideImage} "img"`}
+          src={props.image[prevImage]}
+        />
+>>>>>>> aaronscss
       </div>
 
       <div className={classes.mainImageContainer}>
         <img className={classes.mainImage} src={props.image[count]} />
       </div>
 
+<<<<<<< HEAD
       <div className={classes.sideImageContainer} onClick={imageHandleIncrement}>
         <img className={classes.sideImage} src={props.image[nextImage]} />
           <FiChevronsRight className={classes.arrow} />
+=======
+      <div className={classes.sideImageContainer}>
+        <FiChevronsRight
+          className={classes.arrow}
+          onClick={imageHandleIncrement}
+          onMouseOver={onHoverChangeHandler}
+          onMouseOut={offHoverChangeHandler}
+        />
+        <img
+          onMouseOver={onHoverChangeHandler}
+          onMouseOut={offHoverChangeHandler}
+          onClick={imageHandleIncrement}
+          // className={`${toggle} ? ${classes.sideImageHover} : ${classes.sideImage}`}
+          className={`${classes.sideImage} ${
+            toggle && classes.sideImageHover
+          } `}
+          src={props.image[nextImage]}
+        />
+>>>>>>> aaronscss
       </div>
-
     </div>
   )
 }
