@@ -13,14 +13,16 @@
   justify-content: center;
   align-items: center;
   width: 20%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  /* height: 30%; */
+  background-color: black;
 }
 
 .mainImage {
   object-fit: contain;
   background-color: black;
   width: 100%;
-  height: 350px;
+  height: 70vh;
 }
 
 .sideImage {
@@ -28,23 +30,9 @@
   opacity: .8;
   object-fit: contain;
   width: 100%;
-  height: 50%;
-  background-color: green;
-}
-
-
-  
-  .sideImage:hover {
-  opacity: 1;
-  box-shadow: 2px 2px 2px rgb(27, 27, 27);
-  transition-duration: 1s;
-  transform:scale(1.1);
-}
-
-.sideImage, img {
-  cursor: pointer;
-
-  border: 1px red solid;
+  /* height: 100%; */
+  height: 40%;
+  /* background-color: green; */
 }
 
 .arrow {
@@ -52,5 +40,18 @@
   opacity: .7;
   position: absolute;
   font-size: 8vw;
+  z-index:  10;
 }
 
+#sideImageHover {
+  visibility: none;
+  opacity: 1;
+  transition-duration: 1s;
+  transform:scale(1.1);
+}
+
+.arrowHover {
+  visibility: none;
+  transition-duration: 1s;
+  transform:scale(1.1);
+}

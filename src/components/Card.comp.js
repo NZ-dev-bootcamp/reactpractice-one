@@ -40,14 +40,30 @@ function Card(props) {
 
   console.log(count)
 
+  // const hoverThis = () => {
+  //   document.querySelector('.arrowHover').addEventListener('mouseenter', () => {
+  //     this.style.display = 'visible'
+  //   })
+  // }
+
+  function onHoverChangeHandler(e) {
+    console.log('on hover')
+    console.log('e target', e.target)
+    e.target.style.visibility = className = 'visibility: visible'
+  }
+
   return (
     <div className={classes.cardContainer}>
       <div
         className={classes.sideImageContainer}
         onClick={imageHandleDecrement}
       >
-        <img className={classes.sideImage} src={props.image[prevImage]} />
         <FiChevronsLeft className={classes.arrow} />
+        <img
+          // onHover={hoverThis}
+          className={`${classes.sideImage} "img"`}
+          src={props.image[prevImage]}
+        />
       </div>
 
       <div className={classes.mainImageContainer}>
@@ -58,11 +74,12 @@ function Card(props) {
         className={classes.sideImageContainer}
         onClick={imageHandleIncrement}
       >
+        <FiChevronsRight className={classes.arrow} />
         <img
-          className={classes.sideImage + ' img'}
+          onMouseOver={onHoverChangeHandler}
+          className={`${classes.sideImage} "img"`}
           src={props.image[nextImage]}
         />
-        <FiChevronsRight className={classes.arrow} />
       </div>
     </div>
   )
