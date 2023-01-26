@@ -8,7 +8,8 @@ function Card(props) {
   const [nextImage, setNextImage] = useState([1])
 
   const [toggleHover, setToggleHover] = useState(false)
-  //const [toggleHover, setToggleHover] = useState(!sideImageHover && !arrowHover)
+  //Next step: setToggleHover changes state of hoverable classes in div classNames.
+  //Find working solution for adding multiple classNames.
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
@@ -42,32 +43,54 @@ function Card(props) {
   }
 
 
-  const toggleHoverHandler = (e) => {
-    if (e.target.alt === "side image" || "arrow") {
-      setToggleHover(true);
-      //&& sideImageHover, arrowHover
-    } else {
-      setToggleHover(false);
-      //&& !sideImageHover, !arrowHover
-    }
-    console.log(toggleHover);
-  }
+  // const toggleHoverHandler = (e) => {
+  //   if (e.target.alt === "side image" || "arrow") {
+  //     setToggleHover(true);
+  //     //&& sideImageHover, arrowHover
+  //   } else {
+  //     setToggleHover(false);
+  //     //&& !sideImageHover, !arrowHover
+  //   }
+  //   console.log(toggleHover);
+  // }
 
   return (
-    <div className={classes.cardContainer} onMouseOver={toggleHoverHandler}>
+    <div 
+    className={classes.cardContainer} 
+    // onMouseOver={toggleHoverHandler}
+    >
 
-      <div className={classes.sideImageContainer} onClick={imageHandleDecrement}>
-          <FiChevronsLeft className={classes.arrow} alt="arrow" /> //need to add arrowHover in className
-          <img className={classes.sideImage} src={props.image[prevImage]} alt="side image" /> //need to add sideImageHover in className
+      <div 
+      className={classes.sideImageContainer} 
+      onClick={imageHandleDecrement}>
+          <FiChevronsLeft 
+          className={classes.arrow + classes.arrowHover}
+          alt="arrow" /> 
+          <img 
+          className={classes.sideImage + classes.sideImageHover} 
+          src={props.image[prevImage]} 
+          alt="side image" />
       </div>
 
-      <div className={classes.mainImageContainer}>
-        <img className={classes.mainImage} src={props.image[count]} alt="main image" />
+      <div 
+      className={classes.mainImageContainer}>
+        <img 
+        className={classes.mainImage} 
+        src={props.image[count]} 
+        alt="main image" />
       </div>
 
-      <div className={classes.sideImageContainer} onClick={imageHandleIncrement}>
-        <FiChevronsRight className={classes.arrow} onClick={imageHandleIncrement} alt="arrow" /> //need to add arrowHover in className
-        <img className={classes.sideImage} alt="side image" src={props.image[nextImage]} /> //need to add sideImageHover in className
+      <div 
+      className={classes.sideImageContainer} 
+      onClick={imageHandleIncrement}>
+        <FiChevronsRight 
+        className={classes.arrow + classes.arrowHover}
+        onClick={imageHandleIncrement} 
+        alt="arrow" /> 
+        <img 
+        className={classes.sideImage + classes.sideImageHover}
+        alt="side image" 
+        src={props.image[nextImage]} /> 
       </div>
 
     </div>
