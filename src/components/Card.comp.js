@@ -1,15 +1,11 @@
 import classes from './Card.module.css'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 
 function Card(props) {
   const [count, setCount] = useState(0)
   const [prevImage, setPrevImage] = useState([props.image.length - 1])
   const [nextImage, setNextImage] = useState([1])
-
-  const [toggleHover, setToggleHover] = useState(false)
-  //Next step: setToggleHover changes state of hoverable classes in div classNames.
-  //Find working solution for adding multiple classNames.
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
@@ -42,32 +38,19 @@ function Card(props) {
     }
   }
 
-
-  // const toggleHoverHandler = (e) => {
-  //   if (e.target.alt === "side image" || "arrow") {
-  //     setToggleHover(true);
-  //     //&& sideImageHover, arrowHover
-  //   } else {
-  //     setToggleHover(false);
-  //     //&& !sideImageHover, !arrowHover
-  //   }
-  //   console.log(toggleHover);
-  // }
-
   return (
     <div 
     className={classes.cardContainer} 
-    // onMouseOver={toggleHoverHandler}
     >
 
       <div 
       className={classes.sideImageContainer} 
       onClick={imageHandleDecrement}>
           <FiChevronsLeft 
-          className={classes.arrow + classes.arrowHover}
+          className={classes.arrow}
           alt="arrow" /> 
           <img 
-          className={classes.sideImage + classes.sideImageHover} 
+          className={classes.sideImage} 
           src={props.image[prevImage]} 
           alt="side image" />
       </div>
@@ -84,11 +67,11 @@ function Card(props) {
       className={classes.sideImageContainer} 
       onClick={imageHandleIncrement}>
         <FiChevronsRight 
-        className={classes.arrow + classes.arrowHover}
+        className={classes.arrow}
         onClick={imageHandleIncrement} 
         alt="arrow" /> 
         <img 
-        className={classes.sideImage + classes.sideImageHover}
+        className={classes.sideImage}
         alt="side image" 
         src={props.image[nextImage]} /> 
       </div>
