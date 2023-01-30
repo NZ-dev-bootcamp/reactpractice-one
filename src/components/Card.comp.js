@@ -9,7 +9,7 @@ function Card(props) {
   const [nextImage, setNextImage] = useState([1])
   const handlers = useSwipeable({
     onSwipedRight: () => imageHandleIncrement(),
-    onSwipedLeft: () => imageHandleDecrement,
+    onSwipedLeft: () => imageHandleDecrement(),
   })
 
   const imageHandleIncrement = () => {
