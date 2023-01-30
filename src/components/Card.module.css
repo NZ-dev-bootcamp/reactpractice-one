@@ -2,6 +2,7 @@
   display: flex;
   width: 80vw;
 
+
 }
 
 .mainImageContainer {
@@ -10,7 +11,6 @@
 }
 
 .sideImageContainer {
-
   display: flex;
   align-self: center;
   justify-content: center;
@@ -40,7 +40,7 @@
   height: 80vh;
 }
 
-.arrow {
+.leftArrow,.rightArrow {
   cursor: pointer;
   opacity: .7;
   position: absolute;
@@ -48,28 +48,55 @@
   z-index:  1;
 }
 
-.arrow:hover {
+.arrowLeft .rightArrow :hover {
   transition-duration: 1s;
   transform:scale(1.1);
 }
 
 @media screen and (max-width: 550px) {
-
     .sideImageContainer {
-      display: none;
+      visibility: hidden;
   }
-}
-@media screen and (max-width: 768px) {
 
+
+  .cardContainer {
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .mainImageContainer {
+    display: flex;
+    width: 100%;
+    position: fixed;
+  }
+
+  .rightArrow {
+    visibility: visible;
+    font-size: 5vh;
+    position: absolute;
+  }
+
+  .leftArrow {
+    visibility: visible;
+    font-size: 5vh;
+    position: absolute;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
     .sideImageContainer {
       width: 6.25rem;
       height: 9.37rem;
   }
 
-  .sideImage {
-    cursor: pointer;
-    opacity: .5;
-    max-width: 6.25rem;
-    max-height: 9.37rem;
-  }
+    .sideImage {
+     
+      cursor: pointer;
+      opacity: .5;
+      max-width: 6.25rem;
+      max-height: 9.37rem;
+    }
+
 }
