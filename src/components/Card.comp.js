@@ -1,11 +1,16 @@
 import classes from './Card.module.css'
 import { useState, useEffect } from 'react'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
+import { useSwipeable } from 'react-swipeable'
 
 function Card(props) {
   const [count, setCount] = useState(0)
   const [prevImage, setPrevImage] = useState([props.image.length - 1])
   const [nextImage, setNextImage] = useState([1])
+  const handlers = useSwipeable({
+    onSwipedRight: () => imageHandleIncrement(),
+    onSwipedLeft: () => imageHandleDecrement,
+  })
 
   const imageHandleIncrement = () => {
     setCount((prevCount) => prevCount + 1)
@@ -50,7 +55,7 @@ function Card(props) {
         <img className={classes.sideImage} src={props.image[prevImage]} />
       </div>
 
-      <div className={classes.mainImageContainer}>
+      <div {...handlers} className={classes.mainImageContainer}>
         <img className={classes.mainImage} src={props.image[count]} />
       </div>
 
